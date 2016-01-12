@@ -22,13 +22,29 @@ reg1 <- lm(price ~ carat + as.numeric(cut)
 
 summary(reg1)
 
-#The high coefficient of determination (Multiple R-squared) and low p-value for the F-statistic (< 5%)
-#both support this model being a strong fit for the data. Only z (depth in mm) has a coefficient that is 
+#The high coefficient of determination (Multiple R-squared) and low p-value for the F-statistic (2.2e-16 < 5%)
+#both support this model being a strong fit for the data. The coefficient of determination is exceptionally high,
+#suggesting that over 90% of price variation is explained by this model. Only z (depth in mm) has a coefficient that is 
 #not statistically signification at the 5% level. Thus a new regression is run with z removed:
 
 reg2 <- lm(price ~ carat + as.numeric(cut) 
            + as.numeric(color) + as.numeric(clarity) + x + y + depth + table, data = diamonds)
 
+#Removing z has not had a major impact on the remaining coefficients:
+
 summary(reg2)
 
-#As we can see, removing z has not had a major impact on the remaining coefficients.
+#Breusch-Pagan Test for heteroskedasticity:
+
+#The following must be downloaded to run the subsequent test:
+
+install.packages("lmtest")
+require(lmtest)
+
+#The test:
+
+bp <- bptest(reg2)
+bp
+
+#Our low p-value (2.2e-16) indicates that there is a heteroskedasticity problem.
+#We now need robust standard errors.
