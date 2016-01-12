@@ -17,7 +17,11 @@ Download this repository using either git clone or by unpacking the zip into it'
 
 *diamonds_graphics.R*
 
-* The purpose is to demonstrate how to create scatter plots and bar plots in R. Additionally, the differences between the      default plot functions and the abilities of the R package, ggplot2, are demonstrated.
+* Demonstrates how to create scatter plots and bar plots in R. Additionally, the differences between the      default plot functions and the abilities of the R package, ggplot2, are demonstrated.
+
+*diamonds_stats.R*
+
+* Uses R to apply multiple regression analysis to a cross-sectional database.
   
 
 ## Using This Repository

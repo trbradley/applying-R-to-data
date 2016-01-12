@@ -32,5 +32,3 @@ reg2 <- lm(price ~ carat + as.numeric(cut)
 summary(reg2)
 
 #As we can see, removing z has not had a major impact on the remaining coefficients.
-
-
