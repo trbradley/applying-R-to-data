@@ -2,23 +2,31 @@
 require(ggplot2)
 data("diamonds")
 
+str(diamonds)
+
+View(diamonds)
+
 # To show information on the dataset:
 ?diamonds
 #The information can be seen in the right panel
 
-#We need to ensure all of our data is numerical 
-#(i.e. change columns cut, color and clarity). We need a function to do this:
+#Some of the data appears non-numerical, and so the following appears to be
+#required: diamonds$cut <- replace(diamonds$cut, diamonds$cut == Fair, 1).
+#However, if we run str(diamonds), we can see that, in reality, these non-numerical 
+#values are ordered factors, which already have associated numerical values, and so a 
+#transformation is not required.
 
-numerical_cut <- function (cut_col) {
-  replace(cut_col, cut_col == 'Fair', 1)
-  replace(cut_col, cut_col == 'Good', 2)
-  replace(cut_col, cut_col == 'Very Good', 3)
-  replace(cut_col, cut_col == 'Premium', 4)
-  replace(cut_col, cut_col == 'Ideal', 5)
-}
+#Graphical Analysis
 
-numerical_color <- function
+#Ideally, we want to create a matrix of scatter plots to analyse the data graphically. However,
+#there are about 54,000 rows to the table, and so this would take a lot of processing power. This
+#is demonstrated by trying to run the following:
 
-numerical_clarity <- function
+plot(diamonds$carat, diamonds$price, pch=16, main='Price vs Carat', xlab='Carat', ylab='Price')
+
+
+
+
+
 
 
