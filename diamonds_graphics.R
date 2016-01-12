@@ -30,8 +30,16 @@ plot(diamonds$carat, diamonds$price, pch=16, main="Price vs Carat", xlab="Carat"
 p <- ggplot()
 p + geom_point(data = diamonds, aes(carat, price, color = factor(color)))
 
+#The difference between ggplot and normal plot can particularly be seen with the below bar plots:
 
+counts <- table(diamonds$cut)
+barplot(counts, main="Number in different cuts", legend.text = TRUE, 
+        args.legend = list(x = "top", bty = "n", inset=c(-0.15, 0)), col=c("red","blue","black","gray","pink"))
 
+#Now with ggplot:
+
+b <- ggplot()
+b + geom_bar(data = diamonds, aes(cut, fill = factor(cut)))
 
 
 
