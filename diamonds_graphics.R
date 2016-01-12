@@ -20,7 +20,7 @@ str(diamonds)
 #Some of the data appears to be non-numerical, and so the following appears to be
 #required: diamonds$cut <- replace(diamonds$cut, diamonds$cut == Fair, 1).
 #However, having run str(diamonds), we can see that, in reality, these non-numerical 
-#values are ordered factors, which already have associated numerical values, and so a 
+#values are ordinal factor variables, which already have associated numerical values, and so a 
 #transformation is not required.
 
 #Graphical Analysis
