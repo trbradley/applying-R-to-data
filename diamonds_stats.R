@@ -51,7 +51,7 @@ install.packages("sandwich")
 require(sandwich)
 
 #Sandwich provides various options for heteroskedasticity-robust standard errors
-#Which is 'best' is point of debate. Following Long & Ervin (2000) we first use the default
+#Which is 'best' is point of debate. Following Long & Ervin (2000) we use the default
 #robust standard errors.
 
 reg1$newse<-vcovHC(reg1)
@@ -62,6 +62,21 @@ coeftest(reg1,reg1$newse)
 
 #The coeftest() illustrates how the severe heteroskedasticity has not biased parameter values,
 #it has instead hindered the validity of any statistical tests. Now both y and z have statistically insignificant 
-#coefficients.
+#coefficients. The other results are robust to the standard errors used. 
 
+#Having adjusted for the likely heteroskedasticity, independent variables y and z will now be removed from the model:
 
+reg2 <- lm(price ~ carat + as.numeric(cut) 
+           + as.numeric(color) + as.numeric(clarity) + x + depth + table, data = diamonds)
+
+#There is still heteroskedasticity with y and z removed, as shown below:
+
+bp <- bptest(reg2)
+bp
+
+#Thus, we use robust standard errors:
+
+reg2$newse<-vcovHC(reg2)
+coeftest(reg2,reg2$newse)
+
+#Multi-collinearity Test
