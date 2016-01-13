@@ -25,16 +25,12 @@ summary(reg1)
 #The high coefficient of determination (Multiple R-squared) and low p-value for the F-statistic (2.2e-16 < 5%)
 #both support this model being a strong fit for the data. The coefficient of determination is exceptionally high,
 #suggesting that over 90% of price variation is explained by this model. Only z (depth in mm) has a coefficient that is 
-#not statistically signification at the 5% level. Thus a new regression is run with z removed:
-
-reg2 <- lm(price ~ carat + as.numeric(cut) 
-           + as.numeric(color) + as.numeric(clarity) + x + y + depth + table, data = diamonds)
-
-#Removing z has not had a major impact on the remaining coefficients:
-
-summary(reg2)
+#not statistically signification at the 5% level. 
 
 #Breusch-Pagan Test for heteroskedasticity:
+
+#Severe heteroskedasticity does not bias the parameter values estimated,
+#but it does bias any statistical tests. 
 
 #The following must be downloaded to run the subsequent test:
 
