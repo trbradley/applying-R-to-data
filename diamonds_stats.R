@@ -86,12 +86,14 @@ install.packages("Hmisc")
 require(Hmisc)
 
 # The rcorr function gives us a correlation matrix for the data.
-#Due to our data frame using ordinal factor variables, we use the asNumericMatrix function, also provided by Hmisc, to convert them to numeric data. 
+#Due to our data frame using ordinal factor variables, we use the asNumericMatrix function, also provided by Hmisc,
+#to convert them to numeric data. 
 
 rcorr(asNumericMatrix(diamonds))
 
 # The correlation matrix indicates a potential multicollinearity problem because of the high correlation between carat and the various dimensions.
-# This is unlikely to affect the model's overall use as a predictor of price but will inflate the standard errors. This could potentially explain why the coefficients of y and z were statistically insignificant.
+# This is unlikely to affect the model's overall use as a predictor of price but will inflate the standard errors. 
+#This could potentially explain why the coefficients of y and z were statistically insignificant.
 
 # We will now rerun our regressions, first with only z removed, then with just y removed.
 # The R squared and R squared adjusted will be used to measure fit and select our final model.
@@ -119,6 +121,23 @@ bp4
 reg4$newse <- vcovHC(reg4)
 coeftest(reg4,reg4$newse)
 
-# As as above, this also suggests that z is not significant, even after the removal of y as a variable. Thus we remove y and z from our model, leaving our final model as reg2, seen above.
+# As as above, this also suggests that z is not significant, even after the removal of y as a variable. Thus we remove y and z 
+#from our model, leaving our final model as reg2, seen above.
 
 coeftest(reg2,reg2$newse)
+
+#Interpretation
+
+#Slope Coefficients
+
+#For every unit change in a given variable (holding all other variables included in the model constant), we expect an increase in the US dollar diamond price
+#equal to the value of the coefficent. This does not prove causality. For example, there could be variables (excluded from the model),
+#related both to the given independent variable and the price. 
+#This could result in a statistically significant coefficient value.
+#Reverse causality, when changes in price 'causes' changes in the independent variable, is unlikely to be an issue with this dataset.
+
+#Intercept
+
+#The intercept is the expected US dollar diamond price when all of the independent variables are all zero. For our model, this is $5510.26.
+
+#This is not meaningful for the dataset, as it suggests a diamond with zero mass (carat).
