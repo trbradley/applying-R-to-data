@@ -36,8 +36,8 @@ Download this repository using either git clone or by unpacking the zip into it'
 A major strength of R is the variety of packages available. The below were used:
 
 * Documentation for [ggplot2](https://cran.r-project.org/web/packages/ggplot2/ggplot2.pdf), which also has its [own website](http://ggplot2.org).
-*Documentation for [lmtest](https://cran.r-project.org/web/packages/lmtest/lmtest.pdf), which provides diagnostic tests for linear regression, e.g. heteroskedasticity testing. 
-*Documentation for [sandwich](https://cran.r-project.org/web/packages/sandwich/sandwich.pdf), which provides a variety of robust standard error types.
+* Documentation for [lmtest](https://cran.r-project.org/web/packages/lmtest/lmtest.pdf), which provides diagnostic tests for linear regression, e.g. heteroskedasticity testing. 
+* Documentation for [sandwich](https://cran.r-project.org/web/packages/sandwich/sandwich.pdf), which provides a variety of robust standard error types.
 
 Note that these packages must first be installed, e.g. `install.packages("sandwich")`, and then required, e.g. `require("sandwich")` in order to be used.
 
