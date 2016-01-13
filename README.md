@@ -1,4 +1,4 @@
-# Applying R To A Dataset
+# Applying R To A Cross-Sectional Dataset
 
 Using R to analyse data through multiple regression analysis and graphical analysis, using the 'diamonds' dataset provided by ggplot2. This consists of the prices and characteristics of approximately 54000 individual diamonds.
 
@@ -30,6 +30,20 @@ Download this repository using either git clone or by unpacking the zip into it'
 2. Run the setup code at the beginning of the file.
 3. Read through the file to find code of interest.
 4. Select this block of code and click Run to see the output.
+
+##Model Assumptions
+
+An Ordinary Least Squares approach is used. This means that the Gauss-Markov assumptions have been made:
+
+1. **Strict Exogeneity**: the errors in the regression have a mean of zero and are uncorrelated with the independent variables included.
+2. **Errors follow a normal distribution**.
+3. **Homoskedasticity**: the error term has the same variance across observations.
+4. **Sufficient Variation in data.**
+5. **No Perfect Multicollinearity.**
+6. **The model is linear in its parameters.**
+7. **The sample is random.**
+
+The validity of both the assumptions of homoskedasticity and no perfect multicollinearity will be statistically assessed. 
 
 ##Further Useful Resources 
 
