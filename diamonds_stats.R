@@ -80,3 +80,9 @@ reg2$newse<-vcovHC(reg2)
 coeftest(reg2,reg2$newse)
 
 #Multi-collinearity Test
+#The following must be downloaded for this test:
+
+install.packages("Hmisc")
+require(Hmisc)
+
+rcorr(as.matrix(diamonds))
