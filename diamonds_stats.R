@@ -48,3 +48,21 @@ bp
 
 #Our low p-value (2.2e-16) indicates that there is a heteroskedasticity problem.
 #We now need robust standard errors.
+
+#To implement this, we use a package called 'sandwich':
+
+install.packages("sandwich")
+require(sandwich)
+
+#Sandwich provides various options for heteroskedasticity-robust standard errors
+#Which are 'best' is point of debate. Following Long & Ervin (2000) we first use the default
+#robust standard errors.
+
+reg2$newse<-vcovHC(reg2)
+coeftest(reg2,reg2$newse)
+
+#Note: must require lmtest for coeftest to work. It allows the covariance matrix to be specified
+# - i.e. allows us to use a robust version (reg2$newse).
+
+#The coeftest() illustrates how the severe heteroskedasticity has not biased parameter values,
+#it has instead hindered the validity of any statistical tests.

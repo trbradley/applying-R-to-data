@@ -30,3 +30,21 @@ Download this repository using either git clone or by unpacking the zip into it'
 2. Run the setup code at the beginning of the file.
 3. Read through the file to find code of interest.
 4. Select this block of code and click Run to see the output.
+
+##Further Useful Resources 
+
+A major strength of R is the variety of packages available. The below were used:
+
+* Documentation for [ggplot2](https://cran.r-project.org/web/packages/ggplot2/ggplot2.pdf), which also has its [own website](http://ggplot2.org).
+*Documentation for [lmtest](https://cran.r-project.org/web/packages/lmtest/lmtest.pdf), which provides diagnostic tests for linear regression, e.g. heteroskedasticity testing. 
+*Documentation for [sandwich](https://cran.r-project.org/web/packages/sandwich/sandwich.pdf), which provides a variety of robust standard error types.
+
+Note that these packages must first be installed, e.g. `install.packages("sandwich")`, and then required, e.g. `require("sandwich")` in order to be used.
+
+##References
+
+Long J. S., Ervin L. H. (2000), Using Heteroscedasticity Consistent Standard Errors in the Linear
+Regression Model. The American Statistician, 54, 217–224.
+
+Drew Dimmery provides a useful guide on how to implement 
+robust standard errors [here](http://drewdimmery.com/robust-ses-in-r/).
