@@ -1,8 +1,19 @@
-#Must run the following setup code. This involves requiring the dataset ("diamonds") 
-#that we are to use:
+#Must run the following setup code: 
+
+#See the 'Further Useful Resources' Section in the README, for details on why each package is used:
 
 install.packages("ggplot2")
 require(ggplot2)
+
+install.packages("lmtest")
+require(lmtest)
+
+install.packages("sandwich")
+require(sandwich)
+
+install.packages("Hmisc")
+require(Hmisc)
+
 data("diamonds")
 
 #To get the labels for the different variables:
@@ -32,11 +43,6 @@ summary(reg1)
 # Severe heteroskedasticity does not bias the parameter values estimated,
 # but it does bias any statistical tests. 
 
-# The following must be downloaded to run the subsequent test:
-
-install.packages("lmtest")
-require(lmtest)
-
 # The test:
 
 bp1 <- bptest(reg1)
@@ -45,13 +51,8 @@ bp1
 # Our low p-value (2.2e-16) indicates that there is a heteroskedasticity problem.
 #We now need robust standard errors.
 
-# To implement this, we use a package called 'sandwich':
-
-install.packages("sandwich")
-require(sandwich)
-
-# Sandwich provides various options for heteroskedasticity-robust standard errors
-# Which is 'best' is point of debate. Following Long & Ervin (2000) we use the default
+#The 'sandwich' package provides various options for heteroskedasticity-robust standard errors.
+# The 'best' method is a point of debate. Following Long & Ervin (2000) we use the default
 # robust standard errors.
 
 reg1$newse <- vcovHC(reg1)
@@ -80,12 +81,8 @@ reg2$newse <- vcovHC(reg2)
 coeftest(reg2,reg2$newse)
 
 # Multi-collinearity Test
-# The following must be downloaded for this test:
 
-install.packages("Hmisc")
-require(Hmisc)
-
-# The rcorr function gives us a correlation matrix for the data.
+# The rcorr function from Hmisc gives us a correlation matrix for the data.
 #Due to our data frame using ordinal factor variables, we use the asNumericMatrix function, also provided by Hmisc,
 #to convert them to numeric data. 
 
